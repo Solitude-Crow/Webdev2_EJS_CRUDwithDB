@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Admission Application</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gray-100 min-h-screen flex flex-col items-center justify-center py-10"
+  >
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-3xl pb-10">
+      <!-- Improved Header with Logo and Return Button -->
+      <div class="flex justify-between items-center mb-6">
+        <!-- Logo Section -->
+        <div
+          class="flex items-center space-x-2 cursor-pointer transition-transform hover:scale-105"
+        >
+          <img
+            src="/assets/MKDLogo.png"
+            alt="MKDLogo"
+            class="size-6 md:size-8"
+          />
+          <span
+            class="self-center text-xs font-bold md:text-2xl whitespace-nowrap text-black"
+          >
+            <a href="/users" class="text-blue-600 hover:underline">
+              Mindanao Kokusai Daigaku
+            </a>
+          </span>
+        </div>
+
+        <!-- Return Button -->
+        <a
+          href="/users"
+          class="inline-flex items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+        >
+          <svg
+            class="w-5 h-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19l-7-7 7-7"
+            ></path>
+          </svg>
+          View Applications
+        </a>
+      </div>
+
+      <h1 class="text-3xl font-bold text-center mb-8">
+        Edit Admission Application
+      </h1>
+
+      <form
+        action="/users/<%= user.id %>/edit"
+        method="POST"
+        class="grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
+        <!-- First Name -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="First_name">
+            First Name<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="Fname"
+            id="Fname"
+            value="<%= user.Fname %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Last Name -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="Last_name">
+            Last Name<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="Lname"
+            id="Lname"
+            value="<%= user.Lname %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Middle Name -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="Middle_name">
+            Middle Name<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="Mname"
+            id="Mname"
+            value="<%= user.Mname %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Suffix Name -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="Suffix_name">
+            Suffix Name (e.g., Jr, Sr, III)
+          </label>
+          <input
+            type="text"
+            name="Sname"
+            id="Sname"
+            value="<%= user.Sname %>"
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Contact Number -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="contact_number">
+            Contact Number<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="contact_number"
+            id="contact_number"
+            value="<%= user.contact_number %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Gender -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="gender">
+            Gender<span class="text-red-500 ml-1">*</span>
+          </label>
+          <select
+            name="gender"
+            id="gender"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          >
+            <option value="" disabled>Select gender</option>
+            <option value="Male" <%= user.gender === 'Male' ? 'selected' : '' %>>Male</option>
+            <option value="Female" <%= user.gender === 'Female' ? 'selected' : '' %>>Female</option>
+            <option value="Other" <%= user.gender === 'Other' ? 'selected' : '' %>>Other</option>
+          </select>
+        </div>
+
+        <!-- Birthdate -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="birthdate">
+            Birthdate<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="date"
+            name="birthdate"
+            id="birthdate"
+            value="<%= user.birthdate %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Nationality -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="nationality">
+            Nationality<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="nationality"
+            id="nationality"
+            value="<%= user.nationality %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Country -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="country">
+            Country<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="country"
+            id="country"
+            value="<%= user.country %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Address -->
+        <div class="md:col-span-2">
+          <label class="block text-gray-700 mb-1" for="address">
+            Address<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="address"
+            id="address"
+            value="<%= user.address %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- School Name -->
+        <div class="md:col-span-2">
+          <label class="block text-gray-700 mb-1" for="School_name">
+            School Name<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="school_name"
+            id="school_name"
+            value="<%= user.school_name %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="md:col-span-2">
+          <label class="block text-gray-700 mb-1" for="School_name">
+            Email<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            value="<%= user.email %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Academic Strand -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="academic_strand">
+            Academic Strand<span class="text-red-500 ml-1">*</span>
+          </label>
+          <select
+            name="academic_strand"
+            id="academic_strand"
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          >
+            <option value="" disabled>Select your strand</option>
+            <option value="TVL-AFA" <%= user.academic_strand === 'TVL-AFA' ? 'selected' : '' %>>
+              TVL Track: Agricultural-Fishery Arts (AFA) Strand
+            </option>
+            <option value="TVL-HE" <%= user.academic_strand === 'TVL-HE' ? 'selected' : '' %>>
+              TVL Track: Home Economics (HE)
+            </option>
+            <option value="TVL-IA" <%= user.academic_strand === 'TVL-IA' ? 'selected' : '' %>>
+              TVL Track: Industrial Arts (IA)
+            </option>
+            <option value="TVL-ICT" <%= user.academic_strand === 'TVL-ICT' ? 'selected' : '' %>>
+              TVL Track: Information and Communications Technology (ICT)
+            </option>
+            <option value="Academic Track" <%= user.academic_strand === 'Academic Track' ? 'selected' : '' %>>
+              Took an academic track in Senior High School (SHS)
+            </option>
+          </select>
+        </div>
+
+        <!-- Academic Track -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="academic_track">
+            Academic Track<span class="text-red-500 ml-1">*</span>
+          </label>
+          <select
+            name="academic_track"
+            id="academic_track"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          >
+            <option value="" disabled>Select your track</option>
+            <option value="ABM" <%= user.academic_track === 'ABM' ? 'selected' : '' %>>
+              ABM (Accountancy, Business, and Management)
+            </option>
+            <option value="GAS" <%= user.academic_track === 'GAS' ? 'selected' : '' %>>
+              GAS (General Academic Strand)
+            </option>
+            <option value="STEM" <%= user.academic_track === 'STEM' ? 'selected' : '' %>>
+              STEM (Science, Technology, Engineering, and Mathematics)
+            </option>
+            <option value="HUMSS" <%= user.academic_track === 'HUMSS' ? 'selected' : '' %>>
+              HUMSS (Humanities and Social Sciences)
+            </option>
+            <option value="AD" <%= user.academic_track === 'AD' ? 'selected' : '' %>>
+              AD (Arts and Design)
+            </option>
+            <option value="SPORTS" <%= user.academic_track === 'SPORTS' ? 'selected' : '' %>>
+              Sports (Sports Track)
+            </option>
+            <option value="TVL" <%= user.academic_track === 'TVL' ? 'selected' : '' %>>
+              TVL (Technical-Vocational-Livelihood)
+            </option>
+          </select>
+        </div>
+
+        <!-- Year Graduated -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="Year_graduated">
+            Year Graduated<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="year_graduated"
+            id="year_graduated"
+            value="<%= user.year_graduated %>"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Course Preferences Section -->
+        <div class="md:col-span-2 mt-4">
+          <h2 class="text-xl font-semibold mb-4 border-b pb-2">
+            Course Preferences
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <label class="block text-gray-700 mb-1">
+                Program Choice 1<span class="text-red-500 ml-1">*</span>
+              </label>
+              <input
+                type="text"
+                name="program"
+                value="<%= user.program %>"
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+                placeholder="Type your program of choice"
+                required
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-1">Program Choice 2</label>
+              <input
+                type="text"
+                name="program2"
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+                placeholder="Type your program of choice"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-1">Program Choice 3</label>
+              <input
+                type="text"
+                name="program3"
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+                placeholder="Type your program of choice"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div>
+              <label class="block text-gray-700 mb-1">
+                Exam Date<span class="text-red-500 ml-1">*</span>
+              </label>
+              <input
+                type="date"
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-1">
+                Proof of Payment<span class="text-red-500 ml-1">*</span>
+              </label>
+              <input
+                type="file"
+                name="proof_of_payment"
+                id="proof_of_payment"
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+              />
+              <p class="mt-1 text-sm text-gray-500">
+                Current file: <%= user.proof_of_payment || 'No file uploaded' %>
+              </p>
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-1">
+                School Year<span class="text-red-500 ml-1">*</span>
+              </label>
+              <select
+                name="school_year"
+                id="school_year"
+                required
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+              >
+                <option value="" disabled>Select Year</option>
+                <option value="2023-2024" <%= user.school_year === '2023-2024' ? 'selected' : '' %>>2023-2024</option>
+                <option value="2024-2025" <%= user.school_year === '2024-2025' ? 'selected' : '' %>>2024-2025</option>
+                <option value="2025-2026" <%= user.school_year === '2025-2026' ? 'selected' : '' %>>2025-2026</option>
+                <option value="2026-2027" <%= user.school_year === '2026-2027' ? 'selected' : '' %>>2026-2027</option>
+                <option value="2027-2028" <%= user.school_year === '2027-2028' ? 'selected' : '' %>>2027-2028</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-1">
+                Semester<span class="text-red-500 ml-1">*</span>
+              </label>
+              <select
+                name="semester"
+                id="semester"
+                required
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+              >
+                <option value="" disabled>Select Semester Year</option>
+                <option value="1st Semester" <%= user.semester === '1st Semester' ? 'selected' : '' %>>1st Semester</option>
+                <option value="2nd Semester" <%= user.semester === '2nd Semester' ? 'selected' : '' %>>2nd Semester</option>
+                <option value="Summer" <%= user.semester === 'Summer' ? 'selected' : '' %>>Summer</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit & Cancel Buttons -->
+        <div class="md:col-span-2 flex justify-center gap-4 mt-6">
+          <a 
+            href="/users"
+            class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition font-medium"
+          >
+            Cancel
+          </a>
+          <button
+            type="submit"
+            class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            Update Application
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

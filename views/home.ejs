@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mindanao Kokusai Daigaku - Admissions</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      .hero-section {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+      }
+      .text-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      /* Add this to ensure proper card heights */
+      .program-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .program-card-content {
+        flex-grow: 1;
+      }
+      /* For long program descriptions */
+      .program-description {
+        max-height: 150px;
+        overflow-y: auto;
+      }
+      .hero-section {
+        position: relative;
+        height: 24rem;
+        width: 100%;
+        overflow: hidden;
+        background-color: #2558a2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-content {
+        text-align: center;
+        color: white;
+        z-index: 10;
+        padding: 0 1rem;
+      }
+
+      .hero-title {
+        font-size: 2.25rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 48rem;
+        margin: 0 auto 2rem auto;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-button {
+        background-color: #1d4ed8;
+        color: white;
+        font-weight: bold;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-size: 1.125rem;
+        transition: all 0.3s;
+        display: inline-block;
+        transform: translateY(0);
+      }
+
+      .hero-button:hover {
+        background-color: #1e40af;
+        transform: scale(1.05);
+      }
+
+      .particle-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      @media (min-width: 768px) {
+        .hero-title {
+          font-size: 3.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <!-- Header/Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <img src="/assets/MKDLogo.png" alt="MKDLogo" class="h-8 w-8 mr-2" />
+            <span class="font-bold text-xl text-black"
+              >Mindanao Kokusai Daigaku</span
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <a
+              href="/"
+              class="px-3 py-2 text-blue-600 font-medium hover:text-blue-800"
+              >Home</a
+            >
+            <a
+              href="/programs"
+              class="px-3 py-2 text-gray-600 font-medium hover:text-blue-600"
+              >Programs</a
+            >
+            <a
+              href="/about"
+              class="px-3 py-2 text-gray-600 font-medium hover:text-blue-600"
+              >About</a
+            >
+            <a
+              href="/contact"
+              class="px-3 py-2 text-gray-600 font-medium hover:text-blue-600"
+              >Contact</a
+            >
+            <a
+              href="/users"
+              class="px-3 py-2 text-gray-600 font-medium hover:text-blue-600"
+              >Admin Portal</a
+            >
+            <a
+              href="/users/new"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition ease-in-out duration-150"
+              >Apply Now</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <canvas id="particle-canvas" class="particle-canvas"></canvas>
+      <div class="hero-content">
+        <h1 class="hero-title">Shape Your Future at MKD</h1>
+        <p class="hero-subtitle">
+          Begin your journey to academic excellence and global opportunities at
+          Mindanao Kokusai Daigaku
+        </p>
+        <a href="/users/new" class="hero-button">
+          Apply Now
+          <i class="fas fa-arrow-right" style="margin-left: 0.5rem"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Featured Programs -->
+    <div class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          class="text-3xl font-bold text-center mb-12 animate__animated animate__fadeInUp"
+        >
+          Featured Programs
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Program Card 1 -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover animate__animated animate__fadeInUp program-card"
+          >
+            <div class="bg-blue-600 h-2"></div>
+            <div class="p-6 program-card-content">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-laptop-code text-blue-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                Bachelor of Science in Information Systems
+              </h3>
+              <p class="text-gray-600 mb-4 program-description">
+                The Information Systems program provides students with
+                foundation knowledge on organizations and Information and
+                Communications Technology (ICT). It allows students to
+                understand how ICT can enable organizations to improve
+                performance and achieve competitive advantage. It trains
+                students to develop strong analytical, technical, and leadership
+                skills to thrive in a global environment as future information
+                systems professionals.
+              </p>
+              <a
+                href="/programs/information-systems"
+                class="text-blue-600 hover:text-blue-800 font-medium"
+                >Learn more <i class="fas fa-chevron-right ml-1 text-sm"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Program Card 2 -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover animate__animated animate__fadeInUp animate__delay-1s program-card"
+          >
+            <div class="bg-green-600 h-2"></div>
+            <div class="p-6 program-card-content">
+              <div
+                class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-chart-line text-green-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                Bachelor of Arts in International Studies
+              </h3>
+              <p class="text-gray-600 mb-4 program-description">
+                A four-year undergraduate program which aims to produce
+                competent future leaders in understanding global affairs. It is
+                designed to develop students with the right analytical tools for
+                different social, political, and economic issues among states.
+              </p>
+              <a
+                href="/programs/international-studies"
+                class="text-green-600 hover:text-green-800 font-medium"
+                >Learn more <i class="fas fa-chevron-right ml-1 text-sm"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Program Card 3 -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover animate__animated animate__fadeInUp animate__delay-2s program-card"
+          >
+            <div class="bg-purple-600 h-2"></div>
+            <div class="p-6 program-card-content">
+              <div
+                class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-heart text-purple-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                Bachelor of Human Services
+              </h3>
+              <p class="text-gray-600 mb-4 program-description">
+                The Bachelor in Human Services is designed to train
+                professionals who can assist individuals and communities to
+                function effectively across major domains of living, which are
+                related to mental health and wellbeing. This area of study
+                uniquely approaches the objective of meeting human needs through
+                a multidisciplinary knowledge base, focusing on prevention as
+                well as remediation of problems to improve quality of human
+                lives.
+              </p>
+              <a
+                href="/programs/human-services"
+                class="text-purple-600 hover:text-purple-800 font-medium"
+                >Learn more <i class="fas fa-chevron-right ml-1 text-sm"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="/programs"
+            class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 animate__animated animate__pulse animate__infinite animate__slower"
+          >
+            View All Programs
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admissions Process -->
+    <div class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          class="text-3xl font-bold text-center mb-4 animate__animated animate__fadeInUp"
+        >
+          Admission Process
+        </h2>
+        <p
+          class="text-center text-gray-600 mb-12 max-w-3xl mx-auto animate__animated animate__fadeInUp"
+        >
+          Follow these simple steps to begin your academic journey at Mindanao
+          Kokusai Daigaku
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Step 1 -->
+          <div class="text-center animate__animated animate__fadeInUp">
+            <div
+              class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-white text-xl font-bold">1</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Apply Online</h3>
+            <p class="text-gray-600">
+              Complete the online application form with your personal and
+              academic information
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div
+            class="text-center animate__animated animate__fadeInUp animate__delay-1s"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-white text-xl font-bold">2</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Entrance Examination</h3>
+            <p class="text-gray-600">
+              Take the entrance examination on your scheduled date
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div
+            class="text-center animate__animated animate__fadeInUp animate__delay-2s"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-white text-xl font-bold">3</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Document Verification</h3>
+            <p class="text-gray-600">
+              Submit your academic records and required documents for
+              verification
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div
+            class="text-center animate__animated animate__fadeInUp animate__delay-3s"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-white text-xl font-bold">4</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Enrollment</h3>
+            <p class="text-gray-600">
+              Complete enrollment and begin your academic journey at MKD
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="/users/new"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition-all duration-300 animate__animated animate__pulse animate__infinite animate__slower"
+          >
+            Start Your Application
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          class="text-3xl font-bold text-center mb-12 animate__animated animate__fadeInUp"
+        >
+          Student Testimonials
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Testimonial 1 -->
+          <div
+            class="bg-gray-50 p-6 rounded-lg shadow-sm animate__animated animate__fadeInLeft"
+          >
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-gray-300 mr-4"></div>
+              <div>
+                <h4 class="font-semibold">Maria Santos</h4>
+                <p class="text-sm text-gray-500">
+                  Information Systems, Class of 2023
+                </p>
+              </div>
+            </div>
+            <p class="text-gray-600 italic">
+              "My experience at MKD has been transformative. The faculty's
+              dedication and the diverse learning environment prepared me well
+              for my career in tech."
+            </p>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div
+            class="bg-gray-50 p-6 rounded-lg shadow-sm animate__animated animate__fadeInRight"
+          >
+            <div class="flex items-center mb-4">
+              <div class="w-12 h-12 rounded-full bg-gray-300 mr-4"></div>
+              <div>
+                <h4 class="font-semibold">John Mendoza</h4>
+                <p class="text-sm text-gray-500">
+                  International Studies, Class of 2022
+                </p>
+              </div>
+            </div>
+            <p class="text-gray-600 italic">
+              "The international perspective I gained at MKD has been
+              invaluable. The networking opportunities and practical experience
+              helped me secure a position at a multinational company."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-blue-600 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2
+          class="text-3xl font-bold text-white mb-4 animate__animated animate__fadeInUp"
+        >
+          Ready to Begin Your Journey?
+        </h2>
+        <p
+          class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto animate__animated animate__fadeInUp animate__delay-1s"
+        >
+          Join our diverse community of learners and innovators at Mindanao
+          Kokusai Daigaku
+        </p>
+        <div class="animate__animated animate__fadeInUp animate__delay-2s">
+          <a
+            href="/users/new"
+            class="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 inline-block transform hover:scale-105 mr-4"
+          >
+            Apply Now
+          </a>
+          <a
+            href="/contact"
+            class="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 inline-block"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center mb-4">
+              <img
+                src="/assets/MKDLogo.png"
+                alt="MKDLogo"
+                class="h-8 w-8 mr-2"
+              />
+              <span class="font-bold text-xl">MKD</span>
+            </div>
+            <p class="text-gray-400">
+              Mindanao Kokusai Daigaku is committed to providing quality
+              education that prepares students for global challenges.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="/" class="text-gray-400 hover:text-white">Home</a>
+              </li>
+              <li>
+                <a href="/programs" class="text-gray-400 hover:text-white"
+                  >Programs</a
+                >
+              </li>
+              <li>
+                <a href="/about" class="text-gray-400 hover:text-white"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="/contact" class="text-gray-400 hover:text-white"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Admissions</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="/users/new" class="text-gray-400 hover:text-white"
+                  >Apply Now</a
+                >
+              </li>
+              <li>
+                <a href="/requirements" class="text-gray-400 hover:text-white"
+                  >Requirements</a
+                >
+              </li>
+              <li>
+                <a href="/scholarships" class="text-gray-400 hover:text-white"
+                  >Scholarships</a
+                >
+              </li>
+              <li>
+                <a href="/faqs" class="text-gray-400 hover:text-white">FAQs</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+            <ul class="space-y-2">
+              <li class="flex items-center text-gray-400">
+                <i class="fas fa-map-marker-alt w-5 mr-2"></i> Davao City,
+                Philippines
+              </li>
+              <li class="flex items-center text-gray-400">
+                <i class="fas fa-phone w-5 mr-2"></i> +63 82 123 4567
+              </li>
+              <li class="flex items-center text-gray-400">
+                <i class="fas fa-envelope w-5 mr-2"></i> admissions@mkd.edu.ph
+              </li>
+            </ul>
+            <div class="flex space-x-4 mt-4">
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="text-gray-400 hover:text-white"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2025 Mindanao Kokusai Daigaku. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- AOS Initialization -->
+    <script>
+      // Add scroll event listener to animate elements as they come into view
+      document.addEventListener("DOMContentLoaded", function () {
+        const animatedElements =
+          document.querySelectorAll(".animate__animated");
+
+        function checkIfInView() {
+          animatedElements.forEach((element) => {
+            const elementTop = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+
+            if (elementTop < windowHeight - 100) {
+              if (
+                element.classList.contains("animate__fadeIn") ||
+                element.classList.contains("animate__fadeInUp") ||
+                element.classList.contains("animate__fadeInDown") ||
+                element.classList.contains("animate__fadeInLeft") ||
+                element.classList.contains("animate__fadeInRight")
+              ) {
+                element.style.visibility = "visible";
+                element.style.animationPlayState = "running";
+              }
+            }
+          });
+        }
+
+        // Initialize visibility state
+        animatedElements.forEach((element) => {
+          if (
+            !element.classList.contains("animate__delay-1s") &&
+            !element.classList.contains("animate__delay-2s") &&
+            !element.classList.contains("animate__delay-3s")
+          ) {
+            element.style.visibility = "hidden";
+          }
+        });
+
+        // Check elements on initial load
+        checkIfInView();
+
+        // Check elements on scroll
+        window.addEventListener("scroll", checkIfInView);
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const canvas = document.getElementById("particle-canvas");
+        const ctx = canvas.getContext("2d");
+
+        // Set canvas dimensions
+        function resizeCanvas() {
+          canvas.width = canvas.offsetWidth;
+          canvas.height = canvas.offsetHeight;
+        }
+
+        // Initialize particles
+        let particles = [];
+        const particleCount = 80;
+        const particleColors = [
+          "#ffffff",
+          "#87ddfe",
+          "#acaaff",
+          "#1bffc2",
+          "#f88aff",
+        ];
+
+        function Particle() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 10 + 1;
+          this.speedX = (Math.random() - 0.5) * 0.6;
+          this.speedY = (Math.random() - 0.5) * 0.3;
+          this.color =
+            particleColors[Math.floor(Math.random() * particleColors.length)];
+          this.shape = ["circle", "square", "triangle"][
+            Math.floor(Math.random() * 3)
+          ];
+          this.opacity = Math.random() * 0.4;
+        }
+
+        Particle.prototype.update = function () {
+          this.x += this.speedX;
+          this.y += this.speedY;
+
+          // Boundary check
+          if (this.x > canvas.width || this.x < 0) {
+            this.speedX = -this.speedX;
+          }
+
+          if (this.y > canvas.height || this.y < 0) {
+            this.speedY = -this.speedY;
+          }
+        };
+
+        Particle.prototype.draw = function () {
+          ctx.globalAlpha = this.opacity;
+          ctx.beginPath();
+
+          if (this.shape === "circle") {
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          } else if (this.shape === "square") {
+            ctx.rect(
+              this.x - this.size,
+              this.y - this.size,
+              this.size * 2,
+              this.size * 2
+            );
+          } else if (this.shape === "triangle") {
+            const height = this.size * 1.732; // Approximate height of equilateral triangle
+            ctx.moveTo(this.x, this.y - height / 2);
+            ctx.lineTo(this.x - this.size, this.y + height / 2);
+            ctx.lineTo(this.x + this.size, this.y + height / 2);
+          }
+
+          ctx.fillStyle = this.color;
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        };
+
+        function initParticles() {
+          particles = [];
+          for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+          }
+        }
+
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+          }
+
+          requestAnimationFrame(animate);
+        }
+
+        // Initialize
+        window.addEventListener("resize", function () {
+          resizeCanvas();
+          initParticles();
+        });
+
+        resizeCanvas();
+        initParticles();
+        animate();
+      });
+    </script>
+  </body>
+</html>

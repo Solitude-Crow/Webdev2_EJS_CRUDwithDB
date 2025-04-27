@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admission Application Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-gray-100 min-h-screen flex flex-col items-center justify-center py-10"
+  >
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-3xl pb-10">
+      <!-- Improved Header with Logo and Return Button -->
+      <div class="flex justify-between items-center mb-6">
+        <!-- Logo Section -->
+        <div
+          class="flex items-center space-x-2 cursor-pointer transition-transform hover:scale-105"
+        >
+          <img
+            src="/assets/MKDLogo.png"
+            alt="MKDLogo"
+            class="size-6 md:size-8"
+          />
+          <span
+            class="self-center text-xs font-bold md:text-2xl whitespace-nowrap text-black"
+          >
+            <a href="/" class="text-blue-600 hover:underline">
+              Mindanao Kokusai Daigaku
+            </a>
+          </span>
+        </div>
+
+        <!-- Return Button -->
+        <a
+          href="/users"
+          class="inline-flex items-center px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition"
+        >
+          <svg
+            class="w-5 h-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19l-7-7 7-7"
+            ></path>
+          </svg>
+          View Applications
+        </a>
+      </div>
+
+      <h1 class="text-3xl font-bold text-center mb-8">
+        Admission Application Form
+      </h1>
+
+      <form
+        action="/users"
+        method="POST"
+        class="grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
+        <!-- First Name -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="First_name">
+            First Name<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="Fname"
+            id="Fname"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Last Name -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="Last_name">
+            Last Name<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="Lname"
+            id="Lname"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Middle Name -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="Middle_name">
+            Middle Name<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="Mname"
+            id="Mname"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Suffix Name -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="Suffix_name">
+            Suffix Name (e.g., Jr, Sr, III)
+          </label>
+          <input
+            type="text"
+            name="Sname"
+            id="Sname"
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Contact Number -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="contact_number">
+            Contact Number<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="contact_number"
+            id="contact_number"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Gender -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="gender">
+            Gender<span class="text-red-500 ml-1">*</span>
+          </label>
+          <select
+            name="gender"
+            id="gender"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          >
+            <option value="" disabled selected>Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <!-- Birthdate -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="birthdate">
+            Birthdate<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="date"
+            name="birthdate"
+            id="birthdate"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Nationality -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="nationality">
+            Nationality<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="nationality"
+            id="nationality"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Country -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="country">
+            Country<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="country"
+            id="country"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Address -->
+        <div class="md:col-span-2">
+          <label class="block text-gray-700 mb-1" for="address">
+            Address<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="address"
+            id="address"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- School Name -->
+        <div class="md:col-span-2">
+          <label class="block text-gray-700 mb-1" for="School_name">
+            School Name<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="school_name"
+            id="school_name"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Email -->
+        <div class="md:col-span-2">
+          <label class="block text-gray-700 mb-1" for="School_name">
+            Email<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Academic Strand - Fixed the duplicate and incorrect structure -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="academic_strand">
+            Academic Strand<span class="text-red-500 ml-1">*</span>
+          </label>
+          <select
+            name="academic_strand"
+            id="academic_strand"
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          >
+            <option value="" disabled selected>Select your strand</option>
+            <option value="TVL-AFA">
+              TVL Track: Agricultural-Fishery Arts (AFA) Strand
+            </option>
+            <option value="TVL-HE">TVL Track: Home Economics (HE)</option>
+            <option value="TVL-IA">TVL Track: Industrial Arts (IA)</option>
+            <option value="TVL-ICT">
+              TVL Track: Information and Communications Technology (ICT)
+            </option>
+            <option value="Academic Track">
+              Took an academic track in Senior High School (SHS)
+            </option>
+          </select>
+        </div>
+
+        <!-- Academic Track -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="academic_track">
+            Academic Track<span class="text-red-500 ml-1">*</span>
+          </label>
+          <select
+            name="academic_track"
+            id="academic_track"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          >
+            <option value="" disabled selected>Select your track</option>
+            <option value="ABM">
+              ABM (Accountancy, Business, and Management)
+            </option>
+            <option value="GAS">GAS (General Academic Strand)</option>
+            <option value="STEM">
+              STEM (Science, Technology, Engineering, and Mathematics)
+            </option>
+            <option value="HUMSS">
+              HUMSS (Humanities and Social Sciences)
+            </option>
+            <option value="AD">AD (Arts and Design)</option>
+            <option value="SPORTS">Sports (Sports Track)</option>
+            <option value="TVL">TVL (Technical-Vocational-Livelihood)</option>
+          </select>
+        </div>
+
+        <!-- Year Graduated -->
+        <div>
+          <label class="block text-gray-700 mb-1" for="Year_graduated">
+            Year Graduated<span class="text-red-500 ml-1">*</span>
+          </label>
+          <input
+            type="text"
+            name="year_graduated"
+            id="year_graduated"
+            required
+            class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-300"
+          />
+        </div>
+
+        <!-- Course Preferences Section -->
+        <div class="md:col-span-2 mt-4">
+          <h2 class="text-xl font-semibold mb-4 border-b pb-2">
+            Course Preferences
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>
+              <label class="block text-gray-700 mb-1">
+                Program Choice 1<span class="text-red-500 ml-1">*</span>
+              </label>
+              <input
+                type="text"
+                name="program"
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+                placeholder="Type your program of choice"
+                required
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-1">Program Choice 2</label>
+              <input
+                type="text"
+                name="program2"
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+                placeholder="Type your program of choice"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-1">Program Choice 3</label>
+              <input
+                type="text"
+                name="program3"
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+                placeholder="Type your program of choice"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div>
+              <label class="block text-gray-700 mb-1">
+                Exam Date<span class="text-red-500 ml-1">*</span>
+              </label>
+              <input
+                type="date"
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-1">
+                Proof of Payment<span class="text-red-500 ml-1">*</span>
+              </label>
+              <input
+                type="file"
+                name="proof_of_payment"
+                id="proof_of_payment"
+                required
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+              />
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-1">
+                School Year<span class="text-red-500 ml-1">*</span>
+              </label>
+              <select
+                name="school_year"
+                id="school_year"
+                required
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+              >
+                <option value="" disabled selected>Select Year</option>
+                <option value="2023-2024">2023-2024</option>
+                <option value="2024-2025">2024-2025</option>
+                <option value="2025-2026">2025-2026</option>
+                <option value="2026-2027">2026-2027</option>
+                <option value="2027-2028">2027-2028</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-gray-700 mb-1">
+                Semester<span class="text-red-500 ml-1">*</span>
+              </label>
+              <select
+                name="semester"
+                id="semester"
+                required
+                class="w-full border border-gray-300 p-2 rounded focus:ring focus:ring-blue-300"
+              >
+                <option value="" disabled selected>Select Semester Year</option>
+                <option value="1st Semester">1st Semester</option>
+                <option value="2nd Semester">2nd Semester</option>
+                <option value="Summer">Summer</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="md:col-span-2 text-center mt-6">
+          <button
+            type="submit"
+            class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition font-medium"
+          >
+            Submit Application
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
